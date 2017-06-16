@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Chilas.Algolia.Analytics
+namespace Algolia.Analytics
 {
     public class AlgoliaException : Exception
     {

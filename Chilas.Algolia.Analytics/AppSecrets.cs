@@ -1,4 +1,4 @@
-﻿namespace Chilas.Algolia.Analytics
+﻿namespace Algolia.Analytics
 {
     public class AppSecrets
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Chilas.Algolia.Analytics
+namespace Algolia.Analytics
 {
     public class AnalyticsOptions
     {
