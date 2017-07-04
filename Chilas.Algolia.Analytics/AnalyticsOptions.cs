@@ -56,25 +56,32 @@ namespace Algolia.Analytics
 
                 if (_refinements) queryString += $"refinements={_refinements}&";
                 if (!string.IsNullOrWhiteSpace(_country)) queryString += $"country={_country}&";
-                if (_size >= 0) queryString += $"size={_size}";
-                if (_tags.ToArray().Length > 0)
+                if (_size > 0) queryString += $"size={_size}&";
+                if (_tags?.ToArray().Length > 0)
                 {
                     var tags = _tags.Aggregate(string.Empty, (current, tag) => current + $"{tag},");
                     tags = tags.Remove(tags.Length - 1, 1);
                     queryString += $"tags={tags},";
                 }
+                //var startUnixTimestamp = 
                 var epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
-                if (_startAt <= DateTime.Today)
-                {
-                    var timeSpan = _startAt.ToLocalTime() - epoch;
-                    queryString += $"startAt={timeSpan},";
-                }
 
-                if (_endAt <= DateTime.Today)
+                if (_startAt != default(DateTime))
                 {
-                    var timeSpan = _endAt.ToLocalTime() - epoch;
-                    queryString += $"endAt={timeSpan},";
+                    if (_startAt <= DateTime.Today)
+                    {
+                        //var timeSpan = _startAt.ToLocalTime() - epoch;
+                        var timeSpan = (int)(DateTime.UtcNow.Subtract(_startAt)).TotalSeconds;
+                        queryString += $"startAt={timeSpan}&";
+                    }
+
+                    if (_endAt <= DateTime.Today)
+                    {
+                        var timeSpan = (int)(DateTime.UtcNow.Subtract(_startAt)).TotalSeconds;
+                        queryString += $"endAt={timeSpan},";
+                    }
                 }
+                
 
                 queryString = queryString.Remove(queryString.Length - 1, 1);
 
