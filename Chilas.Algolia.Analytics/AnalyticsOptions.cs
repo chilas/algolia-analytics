@@ -66,21 +66,19 @@ namespace Algolia.Analytics
                 //var startUnixTimestamp = 
                 var epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime();
 
-                if (_startAt != default(DateTime))
-                {
-                    if (_startAt <= DateTime.Today)
+                    if (_startAt <= DateTime.Now && _startAt != default(DateTime))
                     {
-                        //var timeSpan = _startAt.ToLocalTime() - epoch;
-                        var timeSpan = (int)(DateTime.UtcNow.Subtract(_startAt)).TotalSeconds;
-                        queryString += $"startAt={timeSpan}&";
+                        var timeSpan = _startAt.ToLocalTime() - epoch;
+                       // var timeSpan = (int)(DateTime.UtcNow.Subtract(_startAt)).TotalSeconds;
+                        queryString += $"startAt={timeSpan.TotalSeconds}&";
                     }
 
-                    if (_endAt <= DateTime.Today)
+                    if (_endAt <= DateTime.Now && _endAt != default(DateTime))
                     {
-                        var timeSpan = (int)(DateTime.UtcNow.Subtract(_startAt)).TotalSeconds;
-                        queryString += $"endAt={timeSpan},";
+                        var timeSpan = _endAt.ToLocalTime() - epoch;
+                        //var timeSpan = (int)(DateTime.UtcNow.Subtract(_endAt)).TotalSeconds;
+                        queryString += $"endAt={timeSpan.TotalSeconds}&";
                     }
-                }
                 
 
                 queryString = queryString.Remove(queryString.Length - 1, 1);
