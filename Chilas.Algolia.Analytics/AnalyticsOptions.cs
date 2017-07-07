@@ -52,7 +52,7 @@ namespace Algolia.Analytics
         internal string RequestString {
             get {
 
-                var queryString = "?";
+                var queryString = string.Empty;
 
                 if (_refinements) queryString += $"refinements={_refinements}&";
                 if (!string.IsNullOrWhiteSpace(_country)) queryString += $"country={_country}&";
@@ -81,7 +81,7 @@ namespace Algolia.Analytics
                     }
                 
 
-                queryString = queryString.Remove(queryString.Length - 1, 1);
+                queryString = $"?{queryString.Remove(queryString.Length - 1, 1)}";
 
                 return queryString;
             }
