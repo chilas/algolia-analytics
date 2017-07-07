@@ -86,6 +86,16 @@ namespace Algolia.Analytics
         }
 
         /// <summary>
+        /// Default method for getting analytics for ratelimits
+        /// </summary>
+        /// <param name="searchType"></param>
+        /// <returns></returns>
+        public async Task<JObject> GetAnalyticsForRateLimits(AnalyticRateLimitType searchType)
+        {
+            return await GetAnalyticsForRateLimits(new AnalyticsOptions(), searchType);
+        }
+
+        /// <summary>
         /// Get Analytics features for Rate Limits
         /// Consult Algolia Analytics documentation for options
         /// </summary>
