@@ -40,6 +40,16 @@ namespace Algolia.Analytics
         }
 
         /// <summary>
+        /// Default Method for Geting Analytics for searches
+        /// </summary>
+        /// <param name="searchType"></param>
+        /// <returns></returns>
+        public async Task<JObject> GetAnalyticsForSearch(AnalyticSearchType searchType)
+        {
+            return await GetAnalyticsForSearch(new AnalyticsOptions(), searchType);
+        }
+
+        /// <summary>
         /// Get Analytics features for Search
         /// Consult Algolia Analytics documentation for supported options
         /// </summary>
