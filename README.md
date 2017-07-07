@@ -1,4 +1,4 @@
-# A C# Algolia Analytics
+# A C# Algolia Analytics Client
 Analytics Client for Algolia built **.NET Standard 1.4**  
 _PS: Please check the dotnet standard support before use.__
 ## Quickstart
