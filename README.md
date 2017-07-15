@@ -1,5 +1,5 @@
-# A C# Algolia Analytics Client
-Analytics Client for Algolia built **.NET Standard 1.4**  
+# Algolia Analytics Client for .NET
+_built **.NET Standard 1.4**_  
 _PS: Please check the dotnet standard support before use.__
 ## Quickstart
 Get popular search for a fixed date period
